@@ -21,14 +21,8 @@ window.onload = function() {
 
     socket.on("temp", function(data) {
         console.log(data);
-
-        if (data.temp) {
-            messages.push("The temp is " + data.temp);
-            var html = '';
-            for (var i=0; i<messages.length; ++i) {
-                html += messages[i] + "<br />";
-            }
-            content.innerHTML = html;
+        if(data.temp) {
+            content.innerHTML = data.temp;
         } else {
             console.log("There is a problem: ", data);
         }
@@ -36,6 +30,7 @@ window.onload = function() {
 
     sendButton.onclick = function() {
         var text = field.value;
-        socket.emit('send', {message: text});
+        console.log(text);
+        socket.emit('temp', {temp: text});
     };
 }

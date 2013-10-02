@@ -16,7 +16,11 @@ app.get('/hello.txt', function(req, res) {
 
 app.get('/', function(req, res) {
     // res.send("It works!");
-    res.render("page");
+    res.render('page');
+})
+
+app.get('/controls', function(req, res) {
+    res.render('controls');
 })
 
 // app.listen(port);
@@ -27,6 +31,9 @@ io.sockets.on('connection', function(socket) {
     socket.on('send', function(data) {
         io.sockets.emit('message', data);
     });
+    socket.on('temp', function(data) {
+        io.sockets.emit('temp', data);
+    })
 });
 
 console.log("Listening on port 3000");
