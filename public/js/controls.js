@@ -1,3 +1,5 @@
+// TODO: Rewrite with JQuery
+
 window.onload = function() {
     var messages = [];
     var socket = io.connect("http://localhost:3700");
@@ -18,6 +20,23 @@ window.onload = function() {
             console.log("There is a problem: ", data);
         }
     });
+
+    // socket.on("message", function(data) {
+    //     console.log(data);
+    //     if (data.temp) {
+    //         // temperature data
+    //         // what to do with data, from different sources?
+    //     }
+    //     if (data.light) {
+    //         // light data
+    //     }
+    //     if (data.secure) {
+    //         // security data
+    //     }
+    //     if (data.water) {
+    //         // water data
+    //     }
+    // });
 
     socket.on("temp", function(data) {
         console.log(data);
